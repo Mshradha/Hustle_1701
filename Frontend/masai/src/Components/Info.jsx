@@ -5,9 +5,18 @@ import { Box, Button, Text,  Drawer,
     DrawerOverlay,
     DrawerContent,
     DrawerCloseButton,Input, useDisclosure } from '@chakra-ui/react'
-import React from 'react'
+import React, { useState } from 'react'
 
 const Info = () => {
+  const [data,setData] = useState("")
+  const handleSend = ()=> {
+    console.log("e")
+  }
+  const handlechnage=(e)=>{
+    // setData(e)
+    console.log(e)
+
+  }
 
     const { isOpen, onOpen, onClose } = useDisclosure()
   const btnRef = React.useRef()
@@ -26,14 +35,17 @@ const Info = () => {
           <DrawerHeader>Create your account</DrawerHeader>
 
           <DrawerBody>
-            <Input placeholder='Type here...' />
+            <Input placeholder='Type here...' value={(e)=> {
+              setData(e.target.value)
+              console.log(setData)
+            }} />
           </DrawerBody>
 
           <DrawerFooter>
             <Button variant='outline' mr={3} onClick={onClose}>
               Cancel
             </Button>
-            <Button colorScheme='blue'>Save</Button>
+            <Button colorScheme='blue' onClick={()=>{handleSend()}}>Send</Button>
           </DrawerFooter>
         </DrawerContent>
       </Drawer>
