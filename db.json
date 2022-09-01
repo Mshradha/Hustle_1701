@@ -1,0 +1,13 @@
+{
+    "Masai": [
+        {
+            "About": "Masai is an outcome driven career school. Our mission is to skill India’s untapped & underutilized talent, and to train them for some of the most in-demand jobs in the world. We are introducing a new model of higher education in which we, Masai, invest in our students’ future and success. As India’s fastest growing career institute, Masai has one goal: unlocking the human potential of India by making our education system outcome driven."
+        },
+        {"Courses":"FrontEnd Development, BackeEnd Development, Full-Stack Web Development, Data Analytics"},
+        {"Fees":"No Upfront Fees, You have to pay only if you Place above ISA amount"},
+        {"ISA":"Income Share Agreement which you have to sign before joining the Masai"},
+        {"Curriculam":"HTML, CSS, Javascript, React, Redux, Node.js, Express, Mongo"},
+        {"Placement":"You will get interview recomendations after you graduated"}
+        
+    ]
+}
