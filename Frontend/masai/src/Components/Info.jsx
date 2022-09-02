@@ -6,17 +6,43 @@ import { Box, Button, Text,  Drawer,
     DrawerContent,
     DrawerCloseButton,Input, useDisclosure } from '@chakra-ui/react'
 import React, { useState } from 'react'
+import axios from "axios";
+import { useEffect } from 'react';
 
 const Info = () => {
-  const [data,setData] = useState("")
-  const handleSend = ()=> {
-    console.log("e")
-  }
-  const handlechnage=(e)=>{
-    // setData(e)
-    console.log(e)
 
+  const [data , setData ] = useState([]);
+  const [inputData, setInputData]= useState("");
+
+  // const getData  = () => {
+  //    axios.get("http://localhost:8080/")
+  //    .then((res)=> setData(res))
+  //    .catch((err)=> console.log(err));
+  // }
+
+  const getData = async(payoad)=> {
+    const payload = "Tell me something about Masai School?";
+    const reqData = await fetch("http://localhost:8080", {
+      method:"GET",
+      headers:{"content-type":"application/json", "About":payload}
+    })
+    .then((res)=> res.json())
+    .then((res)=> {
+      setData(res.data);
+      console.log(res)
+    })
+    .catch((err)=> console.log(err));
   }
+
+  
+
+  useEffect(()=>{
+    getData();
+    console.log(data);
+  },[])
+  
+
+ 
 
     const { isOpen, onOpen, onClose } = useDisclosure()
   const btnRef = React.useRef()
@@ -35,17 +61,14 @@ const Info = () => {
           <DrawerHeader>Create your account</DrawerHeader>
 
           <DrawerBody>
-            <Input placeholder='Type here...' value={(e)=> {
-              setData(e.target.value)
-              console.log(setData)
-            }} />
+            <Input placeholder='Type here...' />
           </DrawerBody>
 
           <DrawerFooter>
             <Button variant='outline' mr={3} onClick={onClose}>
               Cancel
             </Button>
-            <Button colorScheme='blue' onClick={()=>{handleSend()}}>Send</Button>
+            <Button colorScheme='blue' >Send</Button>
           </DrawerFooter>
         </DrawerContent>
       </Drawer>
