@@ -1,18 +1,25 @@
 const express = require("express");
 
-// const cors = require('cors');
+const cors = require('cors');
 
 
 const UserModel = require("./Modals/User.Modals.js");
 const connect  = require("./configs/dbss.js");
 const app = express();
+app.use(cors());
 app.use(express.json());
 
 app.get("/",async(req,res)=> {
     const hello = req.body.hello;
-    const clients = await UserModel.find({},{_id:0,hello:1});
-           res.send(clients)
+    const Courses = req.body.Courses;
+    // const clients = await UserModel.find({},{_id:0,hello:1});
+    //        res.send(clients)
+           if(req.body.Courses == "What are the courses?"){
+            const clients = await UserModel.find({},{_id:0,Courses:1});
+           return res.send(clients)
+        }
 })
+
 app.post("/post",async(req,res)=>{
     const About = req.body.About;
     const Courses = req.body.Courses
