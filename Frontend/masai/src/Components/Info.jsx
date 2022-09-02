@@ -15,14 +15,14 @@ import {
 import React, { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
-
+var request
 const Info = () => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(["Hello Welcome to masai!!"]);
   const [inputData, setInputData] = useState("");
 
   const getData = () => {
     axios
-      .get("http://localhost:8080/")
+      .get("https://boiling-ravine-09354.herokuapp.com/")
       .then((res) => setData(res.data))
       .catch((err) => console.log(err));
   };
@@ -49,7 +49,7 @@ const Info = () => {
       Curriculam: inputData,
       Placement: inputData}
     // console.log(payload)
-    await fetch("http://localhost:8080/post", {
+    await fetch("https://boiling-ravine-09354.herokuapp.com/post", {
       method: "POST",
       body: JSON.stringify(payload),
       headers: {
@@ -59,8 +59,30 @@ const Info = () => {
       .then((res) => res.json())
       .then((res) => {
         // navigate("/todo")
-        console.log(res);
-        // setData(...data,res)
+        // console.log(res);
+        request = res
+        console.log(request)
+        if(inputData === "Tell me something about Masai School?"){
+          setData([...data,inputData,res[0].About])
+        }
+        else if(inputData === "What are the courses?"){
+          setData([...data,inputData,res[0].Courses])
+        }
+        else if(inputData === "Fee Structure"){
+          setData([...data,inputData,res[0].Fees])
+        }
+        else if(inputData === "What is ISA?"){
+          setData([...data,inputData,res[0].ISA])
+        }
+        else if(inputData === "Curriculam?"){
+          setData([...data,inputData,res[0].Curriculam])
+        }
+        else if(inputData === "Did Masai offer Placement?"){
+          setData([...data,inputData,res[0].Placement])
+        }
+        setInputData("");
+
+       
         // let data1 = (res)
         // setData(res)
         // console.log(data)
@@ -137,6 +159,7 @@ const Info = () => {
               value={inputData}
               onChange={(e) => setInputData(e.target.value)}
             />
+         
             {data.map((elem, index) => {
               return (
                 <Box
@@ -152,6 +175,8 @@ const Info = () => {
                 </Box>
               );
             })}
+
+       
           </DrawerBody>
 
           <DrawerFooter>
