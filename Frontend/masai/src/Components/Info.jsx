@@ -104,7 +104,7 @@ const Info = () => {
           <DrawerHeader>Masai School</DrawerHeader>
 
           <DrawerBody>
-            <Input placeholder='Type here...' position='absolute' mr='4' bottom='4' w='60%' value={inputData} onChange={(e)=> setInputData(e.target.value)} />
+            <Input placeholder='Type here...' position='absolute' mr='4' bottom='4' w='75%' value={inputData} onChange={(e)=> setInputData(e.target.value)} />
             {data.map((elem, index)=> {
               return (
                 <Box key={index} w='100%' fontWeight='600' p='4'  bg='rgb(215,235,242)' mb='4'  style={{borderRadius:" 25px 25px 0px 25px "}} >
