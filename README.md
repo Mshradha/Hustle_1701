@@ -1,3 +1,3 @@
 # Hustle_1701
 
-#Deployment Link: https://glistening-parfait-8e08e2.netlify.app/
+#Deployment Link: https://stupendous-maamoul-a1810c.netlify.app/
